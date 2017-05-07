@@ -31,23 +31,21 @@ describe('GameComponent', () => {
     //expect(buttons.length.toEqual(3);
   }));
 
-  it(`should have Computer Box with loading button`, async(() => {
+  it(`should have Computer Box with loading span`, async(() => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('.content-computer h2').textContent).toContain('Computer');
-    const span = compiled.querySelector('.content-computer span');
-    //expect(span.length.toEqual(3);
+    const span = compiled.querySelector('.content-computer span.computer');
   }));
 
-  it(`should startGame called`, async(() => {
+  xit(`should startGame called`, async(() => {
     const compiled = fixture.debugElement.nativeElement;
-    spyOn(component, 'startGame');
+    //arrange
+    let spy = spyOn(component, 'startGame');
 
     let button = compiled.querySelector(('.content-computer button.scissors');
     button.click();
 
-    fixture.whenStable().then(() => {
-      expect(component.startGame).toHaveBeenCalled();
-    });
+    expect(spy).toHaveBeenCalled();
   }));
 
   xit(`should you won if you selected scissors and computer has paper`, async(() => {

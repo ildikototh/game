@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  protected playerItem = '';
-  protected computerItem = '';
+  public playerItem = '';
+  public computerItem = '';
+  private rock = 'rock';
+  private scissors = 'scissors';
+  private paper = 'paper';
   private elements = new Array();
-  protected winner = '';
+  public winner = '';
 
   constructor() {
   }
@@ -35,9 +38,9 @@ export class GameComponent implements OnInit {
   }
 
   getWhoWon() {
-    if (((this.playerItem === 'paper') && (this.computerItem === 'rock'))
-      || ((this.playerItem === 'rock') && (this.computerItem === 'scissors'))
-      || ((this.playerItem === 'scissors') && (this.computerItem === 'paper'))
+    if (((this.playerItem === this.paper) && (this.computerItem === this.rock))
+      || ((this.playerItem === this.rock ) && (this.computerItem === this.scissors))
+      || ((this.playerItem === this.scissors) && (this.computerItem === this.paper))
     ) {
       return 'You won';
     }

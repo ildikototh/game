@@ -10,7 +10,7 @@ export class GamePage {
   }
 
   getAllPlayerButtonsCount() {
-    return element(by.css('.content-player button')).count();
+    return element.all(by.css('.content-player button')).count();
   }
 
   getScissorButton() {
@@ -26,6 +26,11 @@ export class GamePage {
   }
 
   getComputerSpan() {
-    return element(by.css(' .content-computer span'));
+    return element(by.css('.content-computer span'));
+  }
+
+  getWinnerOnClickingScissor () {
+    element(by.css(' .content-player button.scissors')).click();
+    return element(by.css('.winner')).getText();
   }
 }
