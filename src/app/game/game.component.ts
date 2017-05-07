@@ -8,22 +8,22 @@ import { Component, OnInit } from '@angular/core';
 export class GameComponent implements OnInit {
   public playerItem = '';
   public computerItem = '';
-  private rock = 'rock';
-  private scissors = 'scissors';
-  private paper = 'paper';
-  private elements = new Array();
+  private beatMap = new Object();
   public winner = '';
-
   constructor() {
   }
 
   ngOnInit() {
-    this.elements = ['rock', 'paper', 'scissors'];
+    this.beatMap = {
+      rock: 'scissors',
+      scissors: 'paper',
+      paper: 'rock'
+    };
   }
 
   startGame(event) {
     try {
-      this.playerItem = event.target.id;
+      this.playerItem = event;
       this.computerItem = this.setComputerItem();
       this.winner = this.getWhoWon();
     }
@@ -33,15 +33,12 @@ export class GameComponent implements OnInit {
   }
 
   setComputerItem() {
-    const randomKey = Math.floor(Math.random() * this.elements.length);
-    return this.elements[randomKey];
+    const randomKey = Math.floor(Math.random() * Object.keys(this.beatMap).length);
+    return this.beatMap[randomKey];
   }
 
   getWhoWon() {
-    if (((this.playerItem === this.paper) && (this.computerItem === this.rock))
-      || ((this.playerItem === this.rock ) && (this.computerItem === this.scissors))
-      || ((this.playerItem === this.scissors) && (this.computerItem === this.paper))
-    ) {
+    if (this.beatMap[this.playerItem] === this.computerItem) {
       return 'You won';
     }
     if (this.playerItem === this.computerItem) {
