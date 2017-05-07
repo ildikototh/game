@@ -22,13 +22,13 @@ export class GameComponent implements OnInit {
     };
   }
 
-  getItems() {
+  getItemKeys() {
     return Object.keys(this.beatMap);
   }
 
-  startGame(event) {
+  startGame(item) {
     try {
-      this.playerItem = event;
+      this.playerItem = item;
       this.computerItem = this.setComputerItem();
       this.winner = this.getWhoWon();
     }
@@ -38,8 +38,8 @@ export class GameComponent implements OnInit {
   }
 
   setComputerItem() {
-    const keys = Object.keys(this.beatMap);
-    const randomKey = keys[Math.floor(Math.random() * Object.keys(this.beatMap).length)];
+    const keys=this.getItemKeys();
+    const randomKey = keys[Math.floor(Math.random() * keys.length)];
     return this.beatMap[randomKey];
   }
 

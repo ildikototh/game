@@ -1,6 +1,6 @@
 <div class="content content-player">
   <h2>Player</h2>
-    <button  *ngFor="let item of getItems()" (click)="startGame(item)" class="{{item}}" ></button>
+    <button  *ngFor="let item of getItemKeys()" (click)="startGame(item)" class="{{item}}" ></button>
 </div>
 
 <div class="content content-computer">
