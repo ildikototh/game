@@ -34,7 +34,8 @@ export class GameComponent implements OnInit {
   }
 
   setComputerItem() {
-    const randomKey = Math.floor(Math.random() * Object.keys(this.beatMap).length);
+    const keys = Object.keys(this.beatMap);
+    const randomKey = keys[Math.floor(Math.random() * Object.keys(this.beatMap).length)];
     return this.beatMap[randomKey];
   }
 
