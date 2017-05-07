@@ -10,7 +10,7 @@ export class GamePage {
   }
 
   getAllPlayerButtonsCount() {
-    return element(by.css('.content-player button')).length;
+    return element(by.css('.content-player button')).count();
   }
 
   getScissorButton() {
