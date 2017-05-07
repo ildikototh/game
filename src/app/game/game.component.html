@@ -1,10 +1,6 @@
 <div class="content content-player">
   <h2>Player</h2>
-  <p>
-    <button (click)="startGame(scissors)" class="scissors" ></button>
-    <button (click)="startGame(paper)" class="paper" ></button>
-    <button (click)="startGame(rock)" class="rock" ></button>
-  </p>
+    <button  *ngFor="let item of getItems()" (click)="startGame(item)" class="{{item}}" ></button>
 </div>
 
 <div class="content content-computer">

@@ -22,6 +22,10 @@ export class GameComponent implements OnInit {
     };
   }
 
+  getItems() {
+    return Object.keys(this.beatMap);
+  }
+
   startGame(event) {
     try {
       this.playerItem = event;
