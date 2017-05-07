@@ -1,0 +1,17 @@
+<div class="content content-player">
+  <h2>Player</h2>
+  <p>
+    <button (click)="startGame($event)" class="scissors" id="scissors"></button>
+    <button (click)="startGame($event)" class="paper" id="paper"></button>
+    <button (click)="startGame($event)" class="rock" id="rock"></button>
+  </p>
+</div>
+
+<div class="content content-computer">
+  <h2>Computer</h2>
+  <span class="computer {{computerItem}}" title="{{computerItem}}"></span>
+</div>
+
+<div class="winner">
+  {{winner}}
+</div>

@@ -1,0 +1,55 @@
+$assetPath: '/assets';
+
+.content {
+  width: 50%;
+  float: left;
+  text-align: center;
+  &:after {
+    clear: both;
+  }
+  button {
+    width: 50px;
+    height: 50px;
+    &:target {
+      background-color: yellow;
+    }
+  }
+  span {
+    &.computer {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #a4a4a4;
+      display: inline-block;
+    }
+  }
+  .computer {
+    background: url('#{$assetPath}/images/Loading-icon.gif') no-repeat center;
+    background-size: 100px;
+  }
+
+  .scissors {
+    background: url('#{$assetPath}/images/Scissors-26.png') no-repeat center;
+  }
+
+  .rock {
+    background: url('#{$assetPath}/images/Rock-26.png') no-repeat center;
+  }
+
+  .paper {
+    background: url('#{$assetPath}/images/Paper-26.png') no-repeat center;
+  }
+
+}
+
+.winner {
+  clear: both;
+  width: 100%;
+  text-align: left;
+}
+
+/* On small screens we use full-width */
+@media screen and (max-width: 767px) {
+  .content {
+    width: 100%;
+  }
+}
