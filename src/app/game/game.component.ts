@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-game',
@@ -10,6 +10,7 @@ export class GameComponent implements OnInit {
   public computerItem = '';
   private beatMap = new Object();
   public winner = '';
+
   constructor() {
   }
 
@@ -27,7 +28,7 @@ export class GameComponent implements OnInit {
       this.computerItem = this.setComputerItem();
       this.winner = this.getWhoWon();
     }
-    catch(error) {
+    catch (error) {
       this.winner = 'Application initialisation failed';
     }
   }
