@@ -3,69 +3,103 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {GameComponent} from './game.component';
 
 describe('GameComponent', () => {
-  let component: GameComponent;
-  let fixture: ComponentFixture<GameComponent>;
+    let component:GameComponent;
+    let fixture:ComponentFixture<GameComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [GameComponent]
-    })
-      .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+                declarations: [GameComponent]
+            })
+            .compileComponents();
+    }));
 
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(GameComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(GameComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
 
-  it('should create the game component', () => {
-    expect(component).toBeTruthy();
-  });
+    });
 
-  it(`should have Player Box with three buttons`, async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content-player h2').textContent).toContain('Player');
-    const buttons = compiled.querySelectorAll('.content-player button');
-    //expect(buttons.length.toEqual(3);
-  }));
+    it('should create the game component', () => {
+        expect(component).toBeTruthy();
+    });
 
-  it(`should have Computer Box with loading span`, async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content-computer h2').textContent).toContain('Computer');
-    const span = compiled.querySelector('.content-computer span.computer');
-  }));
+    it(`should have Player Box with three buttons`, async(() => {
+        const compiled = fixture.debugElement.nativeElement;
+        expect(compiled.querySelector('.content-player h2').textContent).toContain('Player');
+        const buttons = compiled.querySelectorAll('.content-player button');
+        expect(buttons.length).toBe(3);
 
-  xit(`should startGame called`, async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    //arrange
-    let spy = spyOn(component, 'startGame');
+    }));
 
-    let button = compiled.querySelector(('.content-computer button.scissors');
-    button.click();
+    it(`should have Computer Box with loading span`, async(() => {
+        const compiled = fixture.debugElement.nativeElement;
+        expect(compiled.querySelector('.content-computer h2').textContent).toContain('Computer');
+        const span = compiled.querySelectorAll('.content-computer span.computer');
+        expect(span.length).toBe(1);
+    }));
 
-    expect(spy).toHaveBeenCalled();
-  }));
+    it(`should startGame called`, async(() => {
+        const startGameSpy = spyOn(component, 'startGame');
+        const compiled = fixture.debugElement.nativeElement;
+        fixture.detectChanges();
+        compiled.querySelectorAll('.content-player button.scissors')[0].click();
+        fixture.whenStable().then(() => {
+            expect(startGameSpy).toHaveBeenCalled();
+        });
+    }));
 
-  xit(`should you won if you selected scissors and computer has paper`, async(() => {
-  }));
+    it(`should return keys of the beatMap object `, async(() => {
+        const compiled = fixture.debugElement.nativeElement;
+        compiled.querySelectorAll('.content-player button.scissors')[0].click();
+        const beatMap = {
+            rock: 'scissors',
+            scissors: 'paper',
+            paper: 'rock'
+        };
+        expect(component.getItemKeys()).toEqual(Object.keys(beatMap));
+    });
 
-  xit(`should you won if you selected paper and computer has rock`, async(() => {
-  }));
+    it(`should you won if you selected scissors and computer has paper`, async(() => {
+        component.playerItem = 'scissors';
+        component.computerItem = 'paper';
+        expect(component.getWinner()).toEqual('You won');
+    }));
 
-  xit(`should you won if you selected rock and computer has scissors`, async(() => {
-  }));
+    it(`should you won if you selected paper and computer has rock`, async(() => {
+        component.playerItem = 'paper';
+        component.computerItem = 'rock';
+        expect(component.getWinner()).toEqual('You won');
+    }));
 
-  xit(`should have computer won if it has rock, and you selected scissors`, async(() => {
-  }));
+    it(`should you won if you selected rock and computer has scissors`, async(() => {
+        component.playerItem = 'rock';
+        component.computerItem = 'scissors';
+        expect(component.getWinner()).toEqual('You won');
+    }));
 
-  xit(`should have computer won if it has paper, and you selected rock`, async(() => {
-  }));
+    it(`should have computer won if it has rock, and you selected scissors`, async(() => {
+        component.playerItem = 'scissors';
+        component.computerItem = 'rock';
+        expect(component.getWinner()).toEqual('The computer won');
+    }));
 
-  xit(`should have computer won if it has scissors, and you selected paper`, async(() => {
-  }));
+    it(`should have computer won if it has paper, and you selected rock`, async(() => {
+        component.playerItem = 'rock';
+        component.computerItem = 'paper';
+        expect(component.getWinner()).toEqual('The computer won');
+    }));
 
-  xit(`should nobody won, idf you and the computer selected same item`, async(() => {
-  }));
+    it(`should have computer won if it has scissors, and you selected paper`, async(() => {
+        component.playerItem = 'paper';
+        component.computerItem = 'scissors';
+        expect(component.getWinner()).toEqual('The computer won');
+    }));
+
+    it(`should nobody won, if you and the computer selected same item`, async(() => {
+        component.playerItem = 'scissors';
+        component.computerItem = 'scissors';
+        expect(component.getWinner()).toEqual('Results are matching, nobody won');
+    }));
 });
