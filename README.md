@@ -1,6 +1,6 @@
 # Rock-Scissors-Paper Game
 
-The game represents the well known Rock-Scissors-Paper game represented in Player<->Computer version. You can select from the rock, scissors and paper, and the computer has it's option either. Each of the three basic signs (eg. rock, paper, and scissors) beats one of the other two, and loses to the other. Navigate to the `https://en.wikipedia.org/wiki/Rock%E2%80%93paper%E2%80%93scissors` for more info.
+The game represents the well known Rock-Scissors-Paper game in Player<->Computer version. You can select from the rock, scissors and paper, and the computer has it's option either. Each of the three basic signs (eg. rock, paper, and scissors) beats one of the other two, and loses to the other. Navigate to the [Wiki](https://en.wikipedia.org/wiki/Rock%E2%80%93paper%E2%80%93scissors) for more info.
 
 ## Development server
 
