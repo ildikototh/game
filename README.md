@@ -1,6 +1,6 @@
-# Game
+# Rock-Scissors-Paper Game
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
+The game represents the well known Rock-Scissors-Paper game represented in Player-Computer Version. You can select from tthe rock, scissors and paper, and the computer has it's option either. Each of the three basic signs (eg. rock, paper, and scissors) beats one of the other two, and loses to the other.
 
 ## Development server
 
